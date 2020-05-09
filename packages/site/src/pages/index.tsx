@@ -2,15 +2,16 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import ky from 'ky-universal'
 import { Voto } from '@openargo/core'
+import Button from '@material-ui/core/Button';
 
 
-const dummy = {
+const dummy: Voto = {
   datGiorno: '',
   desMateria: '',
   prgMateria: 0,
   prgScuola: 0,
   prgScheda: 0,
-  codVotoPratico: '',
+  codVotoPratico: 'P',
   decValore: 0,
   codMin: '',
   desProva: '',
@@ -22,7 +23,7 @@ const dummy = {
 }
 
 type Inputs = {
-  codice: string,
+  code: string,
   username: string,
   password: string,
 };
@@ -50,7 +51,7 @@ const Home = () => {
   return (
     <div>
       <form onSubmit={handleSubmit(handleLogin)}>
-        <input name="codice" placeholder='codice' ref={register({ required: true })} /> <br />
+        <input name="code" placeholder='codice' ref={register({ required: true })} /> <br />
         <input name="username" placeholder='utente' ref={register({ required: true })} /><br />
         <input name="password" placeholder='password' ref={register({ required: true })} /><br />
         <input type="submit" value='login' />

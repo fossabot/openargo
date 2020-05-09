@@ -3,6 +3,6 @@ import { NextApiRequest, NextApiResponse } from 'next'
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   res.statusCode = 200
-  const headers = await login(req.body.username, req.body.password, req.body.codice)
+  const headers = await login(req.body.code, req.body.username, req.body.password)
   res.send(headers)
 }

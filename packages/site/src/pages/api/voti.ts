@@ -3,6 +3,6 @@ import { NextApiRequest, NextApiResponse } from 'next'
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   res.statusCode = 200
-  const voti = await getVoti(req.body.headers)
+  const voti = (await getVoti(req.body.headers)).dati
   res.send(voti)
 }
