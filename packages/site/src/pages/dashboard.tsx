@@ -86,7 +86,12 @@ const Sections = (props: { onSectionClicked?: Function }) => {
             <Divider />
             <List>
                 {['Compiti assegnati', 'Orario classe', 'Ricevimento docenti', 'Bacheca'].map((text, index) => (
-                    <ListItem button key={text}>
+                    <ListItem button key={text} onClick={() => {
+                        console.log('click')
+                        if (typeof props.onSectionClicked === 'function') {
+                            props.onSectionClicked()
+                        }
+                    }}>
                         <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
                         <ListItemText primary={text} />
                     </ListItem>
@@ -96,7 +101,12 @@ const Sections = (props: { onSectionClicked?: Function }) => {
             <List>
                 {['Documenti Alunno', 'Documenti docenti',
                     'Dati anagrafici', 'Informazioni'].map((text, index) => (
-                        <ListItem button key={text}>
+                        <ListItem button key={text} onClick={() => {
+                            console.log('click')
+                            if (typeof props.onSectionClicked === 'function') {
+                                props.onSectionClicked()
+                            }
+                        }}>
                             <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
                             <ListItemText primary={text} />
                         </ListItem>
