@@ -54,17 +54,27 @@ const useStyles = makeStyles((theme: Theme) =>
                 display: "none"
             }
         },
+        toolBar: {
+            [theme.breakpoints.down('sm')]: {
+                'padding-left': theme.spacing(1)
+            }
+        }
     }),
 );
 
-const Sections = () => {
+const Sections = (props: { onSectionClicked?: Function }) => {
     return (
         <div>
             <Divider />
             <List>
                 {['Cosa è successo oggi?', 'Assense giornaliere',
                     'Voti giornalieri', 'Note disciplinari', 'Voti scrutinio',].map((text, index) => (
-                        <ListItem button key={text} onClick={() => { console.log('click') }}>
+                        <ListItem button key={text} onClick={() => {
+                            console.log('click')
+                            if (typeof props.onSectionClicked === 'function') {
+                                props.onSectionClicked()
+                            }
+                        }}>
                             <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
                             <ListItemText primary={text} />
                         </ListItem>
@@ -135,7 +145,7 @@ export default function ClippedDrawer() {
         <div className={classes.root} >
             <CssBaseline />
             <AppBar position="fixed" className={classes.appBar}>
-                <Toolbar>
+                <Toolbar className={classes.toolBar}>
                     <IconButton
                         color="inherit"
                         aria-label="Open drawer"
@@ -166,7 +176,7 @@ export default function ClippedDrawer() {
                 >
                     <Toolbar />
                     <div className={classes.drawerContainer}>
-                        <Sections />
+                        <Sections onSectionClicked={handleDrawerToggle} />
                     </div>
                 </SwipeableDrawer>
             </Hidden>
