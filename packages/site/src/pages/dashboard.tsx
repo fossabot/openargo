@@ -15,6 +15,8 @@ import MailIcon from '@material-ui/icons/Mail';
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import Hidden from "@material-ui/core/Hidden";
+import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
+
 
 
 import ky from 'ky-universal'
@@ -149,11 +151,12 @@ export default function ClippedDrawer() {
             </AppBar>
             <Hidden mdUp>
 
-                <Drawer
+                <SwipeableDrawer
                     className={classes.drawer}
                     variant="temporary"
                     open={isOpen}
                     onClose={handleDrawerToggle}
+                    onOpen={handleDrawerToggle}
                     ModalProps={{
                         keepMounted: true // Better open performance on mobile.
                     }}
@@ -165,7 +168,7 @@ export default function ClippedDrawer() {
                     <div className={classes.drawerContainer}>
                         <Sections />
                     </div>
-                </Drawer>
+                </SwipeableDrawer>
             </Hidden>
             <Hidden smDown >
                 <Drawer
