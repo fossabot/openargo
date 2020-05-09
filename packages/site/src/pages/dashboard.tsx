@@ -12,6 +12,10 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
+import IconButton from "@material-ui/core/IconButton";
+import MenuIcon from "@material-ui/icons/Menu";
+import Hidden from "@material-ui/core/Hidden";
+
 
 import ky from 'ky-universal'
 import { Voto } from '@openargo/core'
@@ -32,6 +36,9 @@ const useStyles = makeStyles((theme: Theme) =>
         },
         drawerPaper: {
             width: drawerWidth,
+            // [theme.breakpoints.up("md")]: {
+            //     position: "relative"
+            // }
         },
         drawerContainer: {
             overflow: 'auto',
@@ -39,6 +46,11 @@ const useStyles = makeStyles((theme: Theme) =>
         content: {
             flexGrow: 1,
             padding: theme.spacing(3),
+        },
+        navIconHide: {
+            [theme.breakpoints.up("md")]: {
+                display: "none"
+            }
         },
     }),
 );
@@ -100,6 +112,11 @@ export default function ClippedDrawer() {
     const classes = useStyles();
 
     const [voti, setVoti] = useState<Voto[]>([dummy])
+    const [isOpen, setIsOpen] = useState<boolean>(false)
+
+    const handleDrawerToggle = () => {
+        setIsOpen(!isOpen)
+    }
 
     useEffect(() => {
         const getVoti = async () => {
@@ -117,23 +134,53 @@ export default function ClippedDrawer() {
             <CssBaseline />
             <AppBar position="fixed" className={classes.appBar}>
                 <Toolbar>
+                    <IconButton
+                        color="inherit"
+                        aria-label="Open drawer"
+                        onClick={handleDrawerToggle}
+                        className={classes.navIconHide}
+                    >
+                        <MenuIcon />
+                    </IconButton>
                     <Typography variant="h6" noWrap>
-                        Clipped drawer
+                        OpenArgo
           </Typography>
                 </Toolbar>
             </AppBar>
-            <Drawer
-                className={classes.drawer}
-                variant="permanent"
-                classes={{
-                    paper: classes.drawerPaper,
-                }}
-            >
-                <Toolbar />
-                <div className={classes.drawerContainer}>
-                    <Sections />
-                </div>
-            </Drawer>
+            <Hidden mdUp>
+
+                <Drawer
+                    className={classes.drawer}
+                    variant="temporary"
+                    open={isOpen}
+                    onClose={handleDrawerToggle}
+                    ModalProps={{
+                        keepMounted: true // Better open performance on mobile.
+                    }}
+                    classes={{
+                        paper: classes.drawerPaper,
+                    }}
+                >
+                    <Toolbar />
+                    <div className={classes.drawerContainer}>
+                        <Sections />
+                    </div>
+                </Drawer>
+            </Hidden>
+            <Hidden smDown >
+                <Drawer
+                    className={classes.drawer}
+                    variant="permanent"
+                    classes={{
+                        paper: classes.drawerPaper,
+                    }}
+                >
+                    <Toolbar />
+                    <div className={classes.drawerContainer}>
+                        <Sections />
+                    </div>
+                </Drawer>
+            </Hidden>
             <main className={classes.content}>
                 <Toolbar />
                 <div>
