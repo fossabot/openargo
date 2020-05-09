@@ -15,13 +15,12 @@ const baseHeaders = {
 
 async function argoRequest(endpoint: string, headers: any, params = '') {
     const prefixUrl = 'https://www.portaleargo.it/famiglia/api/rest';
-    const searchParams = new URLSearchParams(`_dc=${moment().valueOf()}&&${params}&&page=1&&start=0&&limit=25`);
+    const searchParams = new URLSearchParams(`_dc=${moment().valueOf()}&&${params}`);
     try {
         const response = await got(endpoint, { prefixUrl, searchParams, headers })
         return JSON.parse(response.body)
     } catch (error) {
-        console.log(error.response.body)
-        console.log(searchParams.toString())
+        throw error
     }
 
 }
