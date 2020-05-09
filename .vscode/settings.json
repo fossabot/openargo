@@ -1,13 +1,15 @@
-{
-  // "typescript.tsdk": ".vscode/pnpify/typescript/lib",
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  },
-  "eslint.format.enable": true,
-  "[typescript]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-  }
-}
+// {
+//     "editor.formatOnSave": true,
+//     "[javascript]": {
+//         "editor.defaultFormatter": "chenxsan.vscode-standardjs"
+//     },
+//     "[javascriptreact]": {
+//         "editor.defaultFormatter": "chenxsan.vscode-standardjs"
+//     },
+//     "[typescript]": {
+//         "editor.defaultFormatter": "chenxsan.vscode-standardjs"
+//     },
+//     "[typescriptreact]": {
+//         "editor.defaultFormatter": "chenxsan.vscode-standardjs"
+//     }
+// }
