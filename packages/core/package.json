@@ -1,12 +1,12 @@
 {
   "name": "@openargo/core",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "main": "dist/index.js",
   "types": "./dist/index.d.ts",
   "license": "MIT",
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
-    "got": "^11.1.1",
+    "got": "^11.1.2",
     "moment": "^2.25.3"
   },
   "devDependencies": {
@@ -16,7 +16,7 @@
     "typescript": "^3.8.3"
   },
   "scripts": {
-    "start": "node -r ts-node/register src/index.ts"
+    "start": "node -r ts-node/register index.ts"
   },
   "files": [
     "dist/"
