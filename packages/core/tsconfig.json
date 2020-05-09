@@ -1,0 +1,29 @@
+{
+    "compilerOptions": {
+        "declaration": true,
+        "module": "CommonJS",
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "newLine": "lf",
+        "strict": true,
+        "noImplicitAny": true,
+        "noUnusedLocals": false,
+        "noEmitOnError": true,
+        "forceConsistentCasingInFileNames": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "target": "es2018", // Node.js 10
+        "lib": [
+            "esnext"
+        ],
+        "outDir": "./dist",
+        "baseUrl": "./src"
+    },
+    "include": [
+        "src"
+    ],
+    "exclude": [
+        "node_modules",
+        "**/node_modules/*"
+    ]
+}
